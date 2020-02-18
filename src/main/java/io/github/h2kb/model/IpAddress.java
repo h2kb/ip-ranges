@@ -27,10 +27,17 @@ public class IpAddress {
     }
 
     public IpAddress(int octet1, int octet2, int octet3, int octet4) {
-        this.octet1 = octet1;
-        this.octet2 = octet2;
-        this.octet3 = octet3;
-        this.octet4 = octet4;
+        if (octet1 >= 0 && octet1 <= 255 &&
+                octet2 >= 0 && octet2 <= 255 &&
+                octet3 >= 0 && octet3 <= 255 &&
+                octet4 >= 0 && octet4 <= 255) {
+            this.octet1 = octet1;
+            this.octet2 = octet2;
+            this.octet3 = octet3;
+            this.octet4 = octet4;
+        } else {
+            throw new InputMismatchException("You entered incorrect data");
+        }
     }
 
     public static long ipToNumber(IpAddress ipAddress) {
