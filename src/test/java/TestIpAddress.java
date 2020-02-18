@@ -24,4 +24,22 @@ public class TestIpAddress {
         Assert.assertEquals(0L, ipAsNum4);
         Assert.assertEquals(3285067953L, ipAsNum5);
     }
+
+    @Test
+    public void testNumberToIp() {
+        long ipAsNum1 = 1297618184L;
+        long ipAsNum2 = 1297618184L;
+
+        long ipAsNum3 = 3285067953L;
+        long ipAsNum4 = 1297618184L;
+
+        IpAddress ipAddress1 = IpAddress.numberToIp(ipAsNum1);
+        IpAddress ipAddress2 = IpAddress.numberToIp(ipAsNum2);
+
+        IpAddress ipAddress3 = IpAddress.numberToIp(ipAsNum3);
+        IpAddress ipAddress4 = IpAddress.numberToIp(ipAsNum4);
+
+        Assert.assertEquals(ipAddress1, ipAddress2);
+        Assert.assertNotEquals(ipAddress3, ipAddress4);
+    }
 }
