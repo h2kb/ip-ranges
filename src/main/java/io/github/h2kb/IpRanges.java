@@ -2,6 +2,7 @@ package io.github.h2kb;
 
 import io.github.h2kb.model.IpAddress;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class IpRanges {
@@ -11,8 +12,16 @@ public class IpRanges {
         Scanner scanner = new Scanner(System.in);
         String rangeOfIpAddresses = scanner.nextLine().trim();
         String[] ipAddressesInArray = rangeOfIpAddresses.split("\\s+");
-        String StrIpAddress1 = ipAddressesInArray[0];
-        String StrIpAddress2 = ipAddressesInArray[1];
+        String StrIpAddress1 = "";
+        String StrIpAddress2 = "";
+
+        try {
+            StrIpAddress1 = ipAddressesInArray[0];
+            StrIpAddress2 = ipAddressesInArray[1];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new InputMismatchException("You entered incorrect data");
+        }
+
         IpAddress ipAddress1 = new IpAddress(StrIpAddress1);
         IpAddress ipAddress2 = new IpAddress(StrIpAddress2);
 
@@ -24,7 +33,7 @@ public class IpRanges {
                 ipBuilder.append(IpAddress.numberToIp(i)).append("\n");
             }
         } else {
-            System.out.println("You entered the wrong range");
+            throw new InputMismatchException("You entered the wrong range");
         }
 
         System.out.println(ipBuilder.toString());

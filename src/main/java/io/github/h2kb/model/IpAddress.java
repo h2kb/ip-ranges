@@ -1,5 +1,7 @@
 package io.github.h2kb.model;
 
+import java.util.InputMismatchException;
+
 public class IpAddress {
 
     private int octet1;
@@ -12,10 +14,14 @@ public class IpAddress {
 
     public IpAddress(String StrIpAddress) {
         String[] ipAddressInArray = StrIpAddress.split("\\.");
-        this.octet1 = Integer.parseInt(ipAddressInArray[0]);
-        this.octet2 = Integer.parseInt(ipAddressInArray[1]);
-        this.octet3 = Integer.parseInt(ipAddressInArray[2]);
-        this.octet4 = Integer.parseInt(ipAddressInArray[3]);
+        try {
+            this.octet1 = Integer.parseInt(ipAddressInArray[0]);
+            this.octet2 = Integer.parseInt(ipAddressInArray[1]);
+            this.octet3 = Integer.parseInt(ipAddressInArray[2]);
+            this.octet4 = Integer.parseInt(ipAddressInArray[3]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new InputMismatchException("You entered incorrect data");
+        }
     }
 
     public IpAddress(int octet1, int octet2, int octet3, int octet4) {
