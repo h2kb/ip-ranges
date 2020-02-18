@@ -54,4 +54,16 @@ public class TestIpAddress {
 
         Assert.assertEquals(ipRange, ipRangeBuilder.toString());
     }
+
+    @Test
+    public void testIsValidInputRange() {
+        IpAddress ipAddress1 = new IpAddress("192.168.0.1");
+        IpAddress ipAddress2 = new IpAddress("192.168.0.5");
+
+        IpAddress ipAddress3 = new IpAddress("192.168.0.5");
+        IpAddress ipAddress4 = new IpAddress("192.168.0.1");
+
+        Assert.assertTrue(IpAddress.isValidInputRange(ipAddress1, ipAddress2));
+        Assert.assertFalse(IpAddress.isValidInputRange(ipAddress3, ipAddress4));
+    }
 }
