@@ -56,30 +56,6 @@ public class IpAddress {
         return new IpAddress(octet1, octet2, octet3, octet4);
     }
 
-//    public  boolean isValidInputRange(IpAddress ipAddress1, IpAddress ipAddress2) {
-//        long ipAsNum1 = ipToNumber(ipAddress1);
-//        long ipAsNum2 = ipToNumber(ipAddress2);
-//
-//        return ipAsNum1 <= ipAsNum2;
-//    }
-//
-//    public String generateIpRange(IpAddress ipAddress1, IpAddress ipAddress2) {
-//        StringBuilder ipRangeBuilder = new StringBuilder();
-//
-//        if (IpAddress.isValidInputRange(ipAddress1, ipAddress2)) {
-//            long ipToNum1 = IpAddress.ipToNumber(ipAddress1);
-//            long ipToNum2 = IpAddress.ipToNumber(ipAddress2);
-//
-//            for (long i = ipToNum1 + 1; i < ipToNum2; i++) {
-//                ipRangeBuilder.append(IpAddress.numberToIp(i)).append("\n");
-//            }
-//        } else {
-//            throw new InputMismatchException("You entered the wrong range");
-//        }
-//
-//        return ipRangeBuilder.toString();
-//    }
-
     @Override
     public String toString() {
         return String.format("%d.%d.%d.%d", octet1, octet2, octet3, octet4);
