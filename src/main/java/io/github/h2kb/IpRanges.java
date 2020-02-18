@@ -1,6 +1,7 @@
 package io.github.h2kb;
 
 import io.github.h2kb.model.IpAddress;
+import io.github.h2kb.model.IpRangeGenerator;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -23,7 +24,8 @@ public class IpRanges {
 
         IpAddress ipAddress1 = new IpAddress(StrIpAddress1);
         IpAddress ipAddress2 = new IpAddress(StrIpAddress2);
-        String ipRange = IpAddress.generateIpRange(ipAddress1, ipAddress2);
+        IpRangeGenerator ipRangeGenerator = new IpRangeGenerator();
+        String ipRange = ipRangeGenerator.generate(ipAddress1, ipAddress2);
 
         System.out.println(ipRange);
     }

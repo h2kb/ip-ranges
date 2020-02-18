@@ -12,11 +12,11 @@ public class TestIpAddress {
         IpAddress ipAddress4 = new IpAddress("0.0.0.0");
         IpAddress ipAddress5 = new IpAddress("195.206.40.177");
 
-        long ipAsNum1 = IpAddress.ipToNumber(ipAddress1);
-        long ipAsNum2 = IpAddress.ipToNumber(ipAddress2);
-        long ipAsNum3 = IpAddress.ipToNumber(ipAddress3);
-        long ipAsNum4 = IpAddress.ipToNumber(ipAddress4);
-        long ipAsNum5 = IpAddress.ipToNumber(ipAddress5);
+        long ipAsNum1 = ipAddress1.ipToNumber();
+        long ipAsNum2 = ipAddress2.ipToNumber();
+        long ipAsNum3 = ipAddress3.ipToNumber();
+        long ipAsNum4 = ipAddress4.ipToNumber();
+        long ipAsNum5 = ipAddress5.ipToNumber();
 
         Assert.assertEquals(1297618184L, ipAsNum1);
         Assert.assertEquals(3232235876L, ipAsNum2);
@@ -33,37 +33,13 @@ public class TestIpAddress {
         long ipAsNum3 = 3285067953L;
         long ipAsNum4 = 1297618184L;
 
-        IpAddress ipAddress1 = IpAddress.numberToIp(ipAsNum1);
-        IpAddress ipAddress2 = IpAddress.numberToIp(ipAsNum2);
+        IpAddress ipAddress1 = new IpAddress().numberToIp(ipAsNum1);
+        IpAddress ipAddress2 = new IpAddress().numberToIp(ipAsNum2);
 
-        IpAddress ipAddress3 = IpAddress.numberToIp(ipAsNum3);
-        IpAddress ipAddress4 = IpAddress.numberToIp(ipAsNum4);
+        IpAddress ipAddress3 = new IpAddress().numberToIp(ipAsNum3);
+        IpAddress ipAddress4 = new IpAddress().numberToIp(ipAsNum4);
 
         Assert.assertEquals(ipAddress1, ipAddress2);
         Assert.assertNotEquals(ipAddress3, ipAddress4);
-    }
-
-    @Test
-    public void testGenerateIpRange() {
-        StringBuilder ipRangeBuilder = new StringBuilder();
-        IpAddress ipAddress1 = new IpAddress("192.168.0.1");
-        IpAddress ipAddress2 = new IpAddress("192.168.0.5");
-
-        String ipRange = IpAddress.generateIpRange(ipAddress1, ipAddress2);
-        ipRangeBuilder.append("192.168.0.2").append("\n").append("192.168.0.3").append("\n").append("192.168.0.4").append("\n");
-
-        Assert.assertEquals(ipRange, ipRangeBuilder.toString());
-    }
-
-    @Test
-    public void testIsValidInputRange() {
-        IpAddress ipAddress1 = new IpAddress("192.168.0.1");
-        IpAddress ipAddress2 = new IpAddress("192.168.0.5");
-
-        IpAddress ipAddress3 = new IpAddress("192.168.0.5");
-        IpAddress ipAddress4 = new IpAddress("192.168.0.1");
-
-        Assert.assertTrue(IpAddress.isValidInputRange(ipAddress1, ipAddress2));
-        Assert.assertFalse(IpAddress.isValidInputRange(ipAddress3, ipAddress4));
     }
 }

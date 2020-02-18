@@ -40,12 +40,14 @@ public class IpAddress {
         }
     }
 
-    public static long ipToNumber(IpAddress ipAddress) {
-        return (long) ((ipAddress.octet1 * Math.pow(256, 3)) + (ipAddress.octet2 * Math.pow(256, 2)) +
-                (ipAddress.octet3 * Math.pow(256, 1)) + (ipAddress.octet4 * Math.pow(256, 0)));
+    public IpAddress() {
     }
 
-    public static IpAddress numberToIp(long num) {
+    public long ipToNumber() {
+        return (long) ((octet1 * Math.pow(256, 3)) + (octet2 * Math.pow(256, 2)) + (octet3 * Math.pow(256, 1)) + (octet4 * Math.pow(256, 0)));
+    }
+
+    public IpAddress numberToIp(long num) {
         int octet1 = (int) (num / Math.pow(256, 3));
         int octet2 = (int) ((num - octet1 * Math.pow(256, 3)) / Math.pow(256, 2));
         int octet3 = (int) ((num - octet1 * Math.pow(256, 3) - octet2 * Math.pow(256, 2)) / 256);
@@ -54,29 +56,29 @@ public class IpAddress {
         return new IpAddress(octet1, octet2, octet3, octet4);
     }
 
-    public static boolean isValidInputRange(IpAddress ipAddress1, IpAddress ipAddress2) {
-        long ipAsNum1 = ipToNumber(ipAddress1);
-        long ipAsNum2 = ipToNumber(ipAddress2);
-
-        return ipAsNum1 <= ipAsNum2;
-    }
-
-    public static String generateIpRange(IpAddress ipAddress1, IpAddress ipAddress2) {
-        StringBuilder ipRangeBuilder = new StringBuilder();
-
-        if (IpAddress.isValidInputRange(ipAddress1, ipAddress2)) {
-            long ipToNum1 = IpAddress.ipToNumber(ipAddress1);
-            long ipToNum2 = IpAddress.ipToNumber(ipAddress2);
-
-            for (long i = ipToNum1 + 1; i < ipToNum2; i++) {
-                ipRangeBuilder.append(IpAddress.numberToIp(i)).append("\n");
-            }
-        } else {
-            throw new InputMismatchException("You entered the wrong range");
-        }
-
-        return ipRangeBuilder.toString();
-    }
+//    public  boolean isValidInputRange(IpAddress ipAddress1, IpAddress ipAddress2) {
+//        long ipAsNum1 = ipToNumber(ipAddress1);
+//        long ipAsNum2 = ipToNumber(ipAddress2);
+//
+//        return ipAsNum1 <= ipAsNum2;
+//    }
+//
+//    public String generateIpRange(IpAddress ipAddress1, IpAddress ipAddress2) {
+//        StringBuilder ipRangeBuilder = new StringBuilder();
+//
+//        if (IpAddress.isValidInputRange(ipAddress1, ipAddress2)) {
+//            long ipToNum1 = IpAddress.ipToNumber(ipAddress1);
+//            long ipToNum2 = IpAddress.ipToNumber(ipAddress2);
+//
+//            for (long i = ipToNum1 + 1; i < ipToNum2; i++) {
+//                ipRangeBuilder.append(IpAddress.numberToIp(i)).append("\n");
+//            }
+//        } else {
+//            throw new InputMismatchException("You entered the wrong range");
+//        }
+//
+//        return ipRangeBuilder.toString();
+//    }
 
     @Override
     public String toString() {
