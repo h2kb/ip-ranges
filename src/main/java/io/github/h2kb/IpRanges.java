@@ -24,18 +24,8 @@ public class IpRanges {
 
         IpAddress ipAddress1 = new IpAddress(StrIpAddress1);
         IpAddress ipAddress2 = new IpAddress(StrIpAddress2);
+        String ipRange = IpAddress.generateIpRange(ipAddress1, ipAddress2);
 
-        if (IpAddress.isValidRange(ipAddress1, ipAddress2)) {
-            long ipToNum1 = IpAddress.ipToNumber(ipAddress1);
-            long ipToNum2 = IpAddress.ipToNumber(ipAddress2);
-
-            for (long i = ipToNum1 + 1; i < ipToNum2; i++) {
-                ipBuilder.append(IpAddress.numberToIp(i)).append("\n");
-            }
-        } else {
-            throw new InputMismatchException("You entered the wrong range");
-        }
-
-        System.out.println(ipBuilder.toString());
+        System.out.println(ipRange);
     }
 }
