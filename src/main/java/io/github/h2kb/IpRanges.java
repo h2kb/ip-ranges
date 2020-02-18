@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class IpRanges {
 
     public static void main(String[] args) {
-        StringBuilder ipBuilder = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
         String rangeOfIpAddresses = scanner.nextLine().trim();
         String[] ipAddressesInArray = rangeOfIpAddresses.split("\\s+");
