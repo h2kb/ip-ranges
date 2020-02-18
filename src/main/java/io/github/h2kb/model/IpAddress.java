@@ -25,46 +25,14 @@ public class IpAddress {
         this.octet4 = octet4;
     }
 
-    public void setOctet1(int octet1) {
-        this.octet1 = octet1;
-    }
-
-    public void setOctet2(int octet2) {
-        this.octet2 = octet2;
-    }
-
-    public void setOctet3(int octet3) {
-        this.octet3 = octet3;
-    }
-
-    public void setOctet4(int octet4) {
-        this.octet4 = octet4;
-    }
-
-    public int getOctet1() {
-        return octet1;
-    }
-
-    public int getOctet2() {
-        return octet2;
-    }
-
-    public int getOctet3() {
-        return octet3;
-    }
-
-    public int getOctet4() {
-        return octet4;
-    }
-
     @Override
     public String toString() {
         return String.format("%d.%d.%d.%d", octet1, octet2, octet3, octet4);
     }
 
     public static long ipToNumber(IpAddress ipAddress) {
-        return (long) ((ipAddress.getOctet1() * Math.pow(256, 3)) + (ipAddress.getOctet2() * Math.pow(256, 2)) +
-                (ipAddress.getOctet3() * Math.pow(256, 1)) + (ipAddress.getOctet4() * Math.pow(256, 0)));
+        return (long) ((ipAddress.octet1 * Math.pow(256, 3)) + (ipAddress.octet2 * Math.pow(256, 2)) +
+                (ipAddress.octet3 * Math.pow(256, 1)) + (ipAddress.octet4 * Math.pow(256, 0)));
     }
 
     public static IpAddress numberToIp(long num) {
