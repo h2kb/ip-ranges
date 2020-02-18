@@ -14,6 +14,7 @@ public class IpAddress {
 
     public IpAddress(String StrIpAddress) {
         String[] ipAddressInArray = StrIpAddress.split("\\.");
+
         try {
             this.octet1 = Integer.parseInt(ipAddressInArray[0]);
             this.octet2 = Integer.parseInt(ipAddressInArray[1]);

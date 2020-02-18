@@ -12,8 +12,8 @@ public class IpRanges {
         Scanner scanner = new Scanner(System.in);
         String rangeOfIpAddresses = scanner.nextLine().trim();
         String[] ipAddressesInArray = rangeOfIpAddresses.split("\\s+");
-        String StrIpAddress1 = "";
-        String StrIpAddress2 = "";
+        String StrIpAddress1;
+        String StrIpAddress2;
 
         try {
             StrIpAddress1 = ipAddressesInArray[0];
