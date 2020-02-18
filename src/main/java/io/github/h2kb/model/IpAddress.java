@@ -1,6 +1,7 @@
 package io.github.h2kb.model;
 
 import java.util.InputMismatchException;
+import java.util.Objects;
 
 public class IpAddress {
 
@@ -30,11 +31,6 @@ public class IpAddress {
         this.octet2 = octet2;
         this.octet3 = octet3;
         this.octet4 = octet4;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%d.%d.%d.%d", octet1, octet2, octet3, octet4);
     }
 
     public static long ipToNumber(IpAddress ipAddress) {
@@ -73,5 +69,26 @@ public class IpAddress {
         }
 
         return ipRangeBuilder.toString();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%d.%d.%d.%d", octet1, octet2, octet3, octet4);
+    }
+
+    @Override
+    public boolean equals(Object compareObject) {
+        if (this == compareObject) return true;
+        if (compareObject == null || getClass() != compareObject.getClass()) return false;
+        IpAddress ipAddress = (IpAddress) compareObject;
+        return octet1 == ipAddress.octet1 &&
+                octet2 == ipAddress.octet2 &&
+                octet3 == ipAddress.octet3 &&
+                octet4 == ipAddress.octet4;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(octet1, octet2, octet3, octet4);
     }
 }
