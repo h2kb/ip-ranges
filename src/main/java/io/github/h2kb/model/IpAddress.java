@@ -47,7 +47,7 @@ public class IpAddress {
         return new IpAddress(octet1, octet2, octet3, octet4);
     }
 
-    public static boolean isValidRange(IpAddress ipAddress1, IpAddress ipAddress2) {
+    public static boolean isValidInputRange(IpAddress ipAddress1, IpAddress ipAddress2) {
         long ipAsNum1 = ipToNumber(ipAddress1);
         long ipAsNum2 = ipToNumber(ipAddress2);
 
@@ -57,7 +57,7 @@ public class IpAddress {
     public static String generateIpRange(IpAddress ipAddress1, IpAddress ipAddress2) {
         StringBuilder ipRangeBuilder = new StringBuilder();
 
-        if (IpAddress.isValidRange(ipAddress1, ipAddress2)) {
+        if (IpAddress.isValidInputRange(ipAddress1, ipAddress2)) {
             long ipToNum1 = IpAddress.ipToNumber(ipAddress1);
             long ipToNum2 = IpAddress.ipToNumber(ipAddress2);
 

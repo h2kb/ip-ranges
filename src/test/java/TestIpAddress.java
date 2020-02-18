@@ -42,4 +42,16 @@ public class TestIpAddress {
         Assert.assertEquals(ipAddress1, ipAddress2);
         Assert.assertNotEquals(ipAddress3, ipAddress4);
     }
+
+    @Test
+    public void testGenerateIpRange() {
+        StringBuilder ipRangeBuilder = new StringBuilder();
+        IpAddress ipAddress1 = new IpAddress("192.168.0.1");
+        IpAddress ipAddress2 = new IpAddress("192.168.0.5");
+
+        String ipRange = IpAddress.generateIpRange(ipAddress1, ipAddress2);
+        ipRangeBuilder.append("192.168.0.2").append("\n").append("192.168.0.3").append("\n").append("192.168.0.4").append("\n");
+
+        Assert.assertEquals(ipRange, ipRangeBuilder.toString());
+    }
 }
